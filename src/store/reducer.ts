@@ -43,5 +43,3 @@ export class Reducer {
     return [null, null];
   }
 }
-
-export const reducer: Reducer = {};
