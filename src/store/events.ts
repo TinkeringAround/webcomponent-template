@@ -4,9 +4,6 @@ export enum StoreEvents {
   timeUpdated = "[APP] Time Updated",
 }
 
-// Extend Union Type with further Events
-export type StoreEvent = UpdateTimeEvent | TimeUpdatedEvent;
-
 export class UpdateTimeEvent extends CustomEvent<string> {
   constructor(time: string) {
     super(StoreEvents.updateTime, {

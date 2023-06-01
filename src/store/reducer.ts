@@ -1,15 +1,12 @@
-import {
-  TimeUpdatedEvent,
-  StoreEvent,
-  StoreEvents,
-  UpdateTimeEvent,
-} from "./events";
+import { TimeUpdatedEvent, StoreEvents, UpdateTimeEvent } from "./events";
 import { StoreState } from "./state";
+
+type ReducerFunctionReturnValue = [StoreState | null, CustomEvent | null];
 
 type ReducerFunction = (
   state: StoreState,
   event: CustomEvent
-) => [StoreState | null, StoreEvent | null];
+) => ReducerFunctionReturnValue;
 
 type ReducerMap = {
   [key: string]: ReducerFunction;
@@ -32,10 +29,7 @@ export class Reducer {
     },
   };
 
-  static reduce(
-    state: StoreState,
-    event: Event
-  ): [StoreState | null, StoreEvent | null] {
+  static reduce(state: StoreState, event: Event): ReducerFunctionReturnValue {
     if (Reducer.map[event.type]) {
       return Reducer.map[event.type](state, event as CustomEvent);
     }

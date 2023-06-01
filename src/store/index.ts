@@ -1,4 +1,4 @@
-import { StoreEvent, StoreEvents } from "./events";
+import { StoreEvents } from "./events";
 import { StoreState, INIT_APP_STATE } from "./state";
 import { EventObserver } from "../lib/event-observer";
 import { Reducer } from "./reducer";
@@ -28,7 +28,7 @@ export class Store {
     }
   }
 
-  static dispatch(event: StoreEvent) {
+  static dispatch(event: CustomEvent) {
     window.dispatchEvent(event);
   }
 
